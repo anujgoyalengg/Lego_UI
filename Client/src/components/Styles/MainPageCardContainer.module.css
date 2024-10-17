@@ -1,0 +1,34 @@
+.sidebarOpen{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 35px;
+    width: calc(l00vw - 250px);
+    margin-left: 250px;
+    background-color: #55698B;
+    height: auto;   
+    transition: 1s ease-in-out;
+}
+.sidebarClosed{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap:70px ;
+    column-gap: 150px;
+    width: 100vw;
+    /* margin-left: 250px; */
+    background-color: #55698B;
+    height: auto;   
+    transition: 1s ease-in-out;
+}
+
+.cardsContainer{
+    padding: 40px;
+    background-color: #55698B;
+    display: flex;
+    min-height: calc(100vh - 60px);
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+

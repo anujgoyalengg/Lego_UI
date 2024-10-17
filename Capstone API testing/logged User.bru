@@ -1,0 +1,15 @@
+meta {
+  name: logged User
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:500/api/users/loggedUser
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: 
+}

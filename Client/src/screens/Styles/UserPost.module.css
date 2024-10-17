@@ -1,0 +1,41 @@
+.cardsContainer{
+    display: flex;
+    
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    background-color: var(--main_background);
+    height: 100%;
+    padding: 20px;
+}
+
+
+
+.cardsContainer{
+    display: flex;
+    
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    background-color: var(--main_background);
+    height: 100vh;
+    padding: 20px;
+}
+
+.cardsContainer h1{
+    text-align: center;
+    color: var(--heading_color);
+    font-size: 50px;
+
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 90px;
+    width: 100%;
+    background-color: var(--main_background);
+
+    /* padding: 20px; */
+}

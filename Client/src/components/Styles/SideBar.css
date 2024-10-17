@@ -1,0 +1,52 @@
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: -250px;
+    /* Hidden by default */
+    width: 250px;
+    height: 100%;
+    background-color: var(--main_sidebar_bg_color);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 1;
+    /* Ensure sidebar is below navbar */
+}
+
+.sidebar button.active {
+    background-color: #7589AB;
+    color: white;
+  }
+  
+
+.sidebar.open {
+    left: 0;
+    /* Visible when open */
+}
+
+.close-btn {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.sidebar button {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #55698B;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar button:hover {
+    background-color: #7589AB;
+}

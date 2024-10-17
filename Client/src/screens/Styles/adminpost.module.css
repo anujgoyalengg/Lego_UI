@@ -1,0 +1,257 @@
+.cointaner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--main_background);
+}
+
+.formdiv {
+    border: 2px solid white;
+    background-color: var(--main_box_bg_color);
+    border-radius: 15px;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.formdiv:hover {
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.234);
+}
+
+.header {
+    color: var(--heading_color);
+    font-weight: 900;
+    font-size: 40px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.maindiv {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.leftdiv {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 20px;
+}
+
+.leftelemetsdiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.leftelemetsdiv textarea {
+    width: 100%;
+    min-height: 120px;
+    max-height: 120px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    padding: 8px;
+    background: var(--textarea_bg_color);
+}
+
+.leftelemetsdiv input {
+    width: 100%;
+    height: 35px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    padding-left: 10px;
+}
+
+.title,
+.sourcecodepath,
+.file,
+.description {
+    color: var(--heading_color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.sourcecodepath {
+    width: 239px;
+}
+
+.file {
+    width: 239px;
+}
+
+.title {
+    width: 239px;
+}
+
+.description {
+    width: 239px;
+}
+
+.fileInputWrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background-color: var(--heading_color);
+    border-radius: 4px;
+    overflow: auto;
+}
+
+.fileInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    color: black;
+}
+
+.customFileLabel {
+    display: inline-block;
+    background-color: var(--main_btn_bg_color);
+    border-right: 1px solid black;
+    border-radius: 4px 0 0 4px;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.5s;
+}
+
+.customFileLabel:hover {
+    background-color: var(--textarea_bg_color);
+}
+
+.fileName {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.leftelemetsdiv textarea::-webkit-scrollbar {
+    width: 12px;
+}
+
+.leftelemetsdiv textarea::-webkit-scrollbar-track {
+    background: var(--main_btn_bg_color);
+}
+
+.leftelemetsdiv textarea::-webkit-scrollbar-thumb {
+    background: var(--textarea_bg_color);
+    border-radius: 6px;
+    border: 3px solid var(--main_btn_bg_color);
+    cursor: auto;
+}
+
+.leftelemetsdiv textarea::-webkit-scrollbar-thumb:hover {
+    background: var(--textarea_bg_color_thumb_hover);
+}
+
+.rightdiv {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 20px;
+}
+
+.rightelemetsdiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.HTML {
+    margin-right: 10px;
+}
+
+.CSS {
+    margin-right: 22px;
+}
+
+.JS {
+    margin-right: 37px;
+}
+
+.rightelemetsdiv label {
+    color: var(--heading_color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.rightelemetsdiv textarea {
+    width: 100%;
+    min-height: 120px;
+    max-height: 120px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    padding: 8px;
+    resize: none;
+}
+
+.formbtn {
+    position: relative;
+    left: 30px;
+}
+
+.formbtn button {
+    width: 150px;
+    height: 40px;
+    background-color: var(--main_background);
+    color: var(--heading_color);
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.formbtn button:hover {
+    background-color: var(--main_btn_color);
+}
+
+.popup {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    text-align: center;
+    padding: 10px;
+    color: var(--heading_color);
+    font-size: 16px;
+    z-index: 1000;
+}
+
+.success {
+    background-color: #4caf50;
+}
+
+.error {
+    background-color: #f44336;
+}
