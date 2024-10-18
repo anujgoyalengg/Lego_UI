@@ -2,11 +2,11 @@
   "name": "s47_hanshul_capstone_legoui",
   "version": "1.0.0",
   "description": "Project Title: LegoUI",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "server.js"
-
+    "start": "index.js"
+    
   },
   "keywords": [],
   "author": "",

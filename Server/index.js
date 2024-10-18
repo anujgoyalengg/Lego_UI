@@ -10,7 +10,7 @@ const OAuth2Strategy = require('passport-google-oauth2').Strategy;
 const userdb = require('./model/user.Schema.js');
 const userRoutes = require('./routes/userRoutes.js');
 const admincodes = require('./routes/admincodes.routes.js');
-const usercodes = require('./routes/usercodes.routes')
+const usercodes = require('./routes/usercodes.routes.js')
 
 
 const clientid = process.env.CLIENTID;
