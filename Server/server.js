@@ -2,7 +2,7 @@ const express = require('express');
 require("dotenv").config();
 const app = express();
 const cors = require('cors');
-const PORT = 500;
+const PORT =500;
 const ConnectToDB = require('./config/dbconnect.js');
 const session = require('express-session');
 const passport = require('passport');
@@ -11,35 +11,31 @@ const userdb = require('./model/user.Schema.js');
 const userRoutes = require('./routes/userRoutes.js');
 const admincodes = require('./routes/admincodes.routes.js');
 const usercodes = require('./routes/usercodes.routes')
-const cookieParser = require('cookie-parser');
+
 
 const clientid = process.env.CLIENTID;
 const clientsecret = process.env.CLINTSECRET;
-const sessionKey = process.env.SESSIONKEY ;
+const sessionKey = process.env.SESSIONKEY;
 
-ConnectToDB();
+ConnectToDB() 
 
-app.use(cors({
-    origin: "http://localhost:3000",
-    methods: "GET, POST, PUT, DELETE",
-    credentials: true
-}));
 
+app.use(cors({origin: "http://localhost:3000",method : "GET, POST, PUT, DELETE",credentials: true}))
 app.use(express.json());
-app.use(cookieParser());
 
-// Session middleware configuration
+ // Load Routes
+app.use('/api/users', userRoutes)
+app.use('/api/admin',admincodes);
+app.use('/api/user',usercodes);
+
+// setup session 
 app.use(session({
     secret: sessionKey,
     resave: false,
-    saveUninitialized: true,
-    cookie: {
-        secure: false,
-        maxAge: new Date(Date.now() + 3600000)
-    }
-}));
+    saveUninitialized: true
+}))
 
-// Initialize Passport and restore authentication state, if any, from the session
+// Setup passport middleware to use google oauth strategy
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -51,11 +47,10 @@ passport.use(
             callbackURL: "/auth/google/callback",
             scope: ["email", "profile"]
         },
-        async (accessToken, refreshToken, profile, done) => {
-            try {
-                // console.log(profile)
-                let user = await userdb.findOne({ googleId: profile.id })
-                if (!user) {
+        async(accessToken, refreshToken, profile, done)=>{
+            try{console.log(profile)
+                let user = await userdb.findOne({googleId: profile.id})
+                if(!user){
                     user = new userdb({
                         googleId: profile.id,
                         displayName: profile.displayName,
@@ -63,67 +58,47 @@ passport.use(
                         image: profile.photos[0].value,
                     });
                     await user.save();
-                    console.log("New user created:", user.email);
-                } else {
-                    console.log("Existing user found:", user.email);
                 }
                 return done(null, user)
-            } catch (error) {
-                console.error("Error during authentication:", error);
-                return done(error, null)
+            }catch (error) {
+                return done(error,null)
             }
         }
     )
 )
 
-passport.serializeUser((user, done) => {
-    done(null, user.id)  // Change this line
+passport.serializeUser((user, done)=>{
+    done(null, user)
 })
-
-passport.deserializeUser(async (id, done) => { 
-    try {
-        const user = await userdb.findById(id);
-        done(null, user);
-    } catch (error) {
-        done(error, null);
-    }
+passport.deserializeUser((user, done)=>{
+    done(null, user)
 });
 
-app.get('/',(req,res)=>{
-    res.send("The server is running!")
-})
-app.use('/api/users', userRoutes)
-app.use('/api/admin',admincodes);
-app.use('/api/user',usercodes);
-
 // Initialise google auth login
-app.get("/auth/google", passport.authenticate("google", { scope: ["email", "profile"] }));
 
-app.get("/auth/google/callback", passport.authenticate("google", {
-    successRedirect: "http://localhost:3000/home",
-    failureRedirect: "http://localhost:3000/login",
-}), (req, res) => {
-    // This callback will be called after successful authentication
-    if (req.user) {
-        console.log("User authenticated successfully:", req.user);
+app.get("/auth/google",passport.authenticate("google", { scope: ["email", "profile"] }));
+
+app.get("/auth/google/callback",passport.authenticate("google", {
+        successRedirect : "http://localhost:3000/home",
+        failureRedirect: "http://localhost:3000/login"
+    })
+)
+
+app.get("/login/sucess",async(req,res)=>{
+    if(req.user){
+        res.status(200).json({message:"Login Success", user: req.user})
+    }else{
+        res.status(401).json({message:"Not Authorized"})
     }
 })
 
-app.get("/login/success", (req, res) => {
-    if (req.user) {
-        res.status(200).json({ message: "Login Success", user: req.user })
-    } else {
-        res.status(401).json({ message: "Not Authorized" })
-    }
-})
-
-app.get("/logout", (req, res, next) => {
-    req.logout(function(err) {
-        if (err) { return next(err); }
+app.get("/logout",async(req,res)=>{
+    req.logout(function(err){
+        if(err) return next(err);
         res.redirect('http://localhost:3000/login');
     });
 })
 
-app.listen(PORT, () => {
+app.listen(PORT,()=>{
     console.log(`Server is running on PORT ${PORT}`);
 })

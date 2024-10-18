@@ -1,28 +1,30 @@
 .logo {
-    color: var(--navBar_content_color);
+    color: var(--logo_color);
+    width: ;
 }
 
 
 .navbar {
     position: sticky;
     z-index: 2;
+    background-color: var(--nev_bar);
     padding: 0 20px 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var( --navBar_bg_color);
+    background-color: #304057;
     height: 60px;
 }
 
 
 .rightnav div h4 {
-    color: var(--navBar_content_color);
+    color: var(--link_color);
     font-size: 20px;
     font-weight: 900;
 }
 
 .rightnav div h4:hover {
-    color: var(--navBar_link_hover_color);
+    color: var(--link_hover_color);
     text-decoration: underline;
 }
 

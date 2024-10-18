@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import styles from "../Styles/MainPageCard.module.css";
 import { MdDelete, MdEdit } from "react-icons/md";
 import axios from 'axios';
-// import
 
 const Card = ({ isSidebarOpen, adminCode, userCode, Displaybtns, setAdminCodes, setUserCodes }) => {
   const navigate = useNavigate();
@@ -13,14 +12,6 @@ const Card = ({ isSidebarOpen, adminCode, userCode, Displaybtns, setAdminCodes, 
   
   
   const handleEdit = () => {
-    // try {
-    //   if(){
-
-    //   }
-      
-    // } catch (error) {
-      
-    // }
     navigate('/code/user/post/edit', { state: { code } }); // Passing the 'code' data to the edit form
   };
   

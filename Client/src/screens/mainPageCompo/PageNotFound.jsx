@@ -6,9 +6,12 @@ function CardDesigns({ isSidebarOpen }) {
   const {AdminEmail,user, adminCodes,setDisplaybtns,Displaybtns } = useContext(UserContext);
   const cardDesigns = adminCodes.filter(code => code.sourceCodePath === 'pagenotfound_design');
 
+  console.log(adminCodes);
   
   try {
-    if(user.user.email === AdminEmail ||user.email === AdminEmail){
+    if(user.user.email||user.email === AdminEmail){
+    console.log(user.user.email === AdminEmail);
+    
     setDisplaybtns(true)
   }
   } catch (error) {

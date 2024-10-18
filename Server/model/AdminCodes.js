@@ -37,12 +37,6 @@ const codeSchema = new mongoose.Schema({
     type: String,
     required: true,
   }, 
-  previewLink: {
-    type: String,
-  },
-  videoPath:{
-    type: String
-  }
 });
 
 const AdminCode = mongoose.model('admincodes', codeSchema);

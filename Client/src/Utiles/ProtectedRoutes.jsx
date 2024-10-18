@@ -9,7 +9,7 @@ function ProtectedRoutes() {
     return <div>Loading...</div>;
   }
 
-  return user ? <Outlet /> : <Navigate to="/login" />;
+  return user || user.user ? <Outlet /> : <Navigate to="/login" />;
 }
 
 export default ProtectedRoutes;

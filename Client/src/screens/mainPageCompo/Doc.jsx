@@ -16,7 +16,7 @@ function Doc({ toggleSidebar, isSidebarOpen }) {
               efficiently. Explore our collection today and elevate your
               development process with ease and style!
             </p>
-            <button onClick={toggleSidebar}><strong>Explore</strong></button>
+            <button onClick={toggleSidebar}>Explore</button>
           </div>
         </div>
       </div>

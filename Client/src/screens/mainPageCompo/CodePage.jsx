@@ -10,7 +10,6 @@ import { useLocation } from 'react-router-dom';
 const DisplayPage = () => {
   const location = useLocation();
   const code = location.state;
- 
 
   const [copiedSection, setCopiedSection] = useState(null);
 
@@ -88,24 +87,21 @@ const DisplayPage = () => {
     },
   };
 
-  console.log(code);
-  
-
   return (
     <div className={styles.maindiv}>
       <div className={styles.container}>
-        <h1 className={styles.heading}>{code.title}</h1>
+        <h1 className={styles.heading}>CSS Login Pages</h1>
         <div className={styles.main}>
           <div className={styles.leftSide}>
             <img src={code.imagePath} alt={code.title} className={styles.image} />
           </div>
           <div className={styles.rightSide}>
             <p className={styles.description}>{code.description}</p>
+            <a href={code.githublink} target="_blank" rel="noopener noreferrer">
+              <button><FaGithub /> Github Link</button>
+            </a>
           </div>
         </div>
-        <a href={code.githublink} target="_blank" rel="noopener noreferrer">
-          <button className={styles.githubbtn}><FaGithub /> Github Link</button>
-        </a>
         <div className={styles.codeSection}>
           <div className={styles.codeHeader}>
             <h3 className={styles.codeHeading}>HTML Code</h3>

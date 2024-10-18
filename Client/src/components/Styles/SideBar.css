@@ -5,7 +5,7 @@
     /* Hidden by default */
     width: 250px;
     height: 100%;
-    background-color: var(--main_sidebar_bg_color);
+    background-color: #304057;
     color: white;
     display: flex;
     flex-direction: column;
@@ -13,12 +13,6 @@
     z-index: 1;
     /* Ensure sidebar is below navbar */
 }
-
-.sidebar button.active {
-    background-color: #7589AB;
-    color: white;
-  }
-  
 
 .sidebar.open {
     left: 0;

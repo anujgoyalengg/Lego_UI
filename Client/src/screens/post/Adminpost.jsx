@@ -12,14 +12,10 @@ function Adminpost() {
   const [html, setHtml] = useState('');
   const [css, setCss] = useState('');
   const [js, setJs] = useState('');
-  const [previewLink, setPreviewLink] = useState('');  // Added state for Preview Link
-  const [video, setVideo] = useState(null);            // Added state for Video
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState('');
   const [fileName, setFileName] = useState('No file chosen');
-  const [videoName, setVideoName] = useState('No video chosen');  // Added state for Video Name
 
-  // Handle image file selection
   const handleFileChange = (event) => {
     const input = event.target;
     if (input.files.length > 0) {
@@ -30,18 +26,6 @@ function Adminpost() {
     }
   };
 
-  // Handle video file selection
-  const handleVideoChange = (event) => {
-    const input = event.target;
-    if (input.files.length > 0) {
-      setVideoName(input.files[0].name);
-      setVideo(input.files[0]);
-    } else {
-      setVideoName('No video chosen');
-    }
-  };
-
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
@@ -54,10 +38,9 @@ function Adminpost() {
     formData.append('html', html);
     formData.append('css', css);
     formData.append('js', js);
-    formData.append('previewLink', previewLink);  // Added previewLink to formData
-    formData.append('video', video);              // Added video to formData
 
     try {
+      setSubmitting(true);
       await axios.post('http://localhost:500/api/admin/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -65,6 +48,7 @@ function Adminpost() {
       });
       setMessage('Your code is uploaded');
     } catch (error) {
+      console.log(formData)
       console.error('Error uploading data', error);
       setMessage('Failed to upload data');
     } finally {
@@ -77,11 +61,11 @@ function Adminpost() {
 
   return (
     <motion.div
-      className={styles.cointaner}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
+    className={styles.cointaner}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 1 }}
+  >
       <div className={styles.formdiv}>
         <h1 className={styles.header}>Upload Form</h1>
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -126,14 +110,6 @@ function Adminpost() {
                 </div>
               </div>
               <div className={styles.leftelemetsdiv}>
-                <label className={styles.file}>Video Upload :</label>
-                <div className={styles.fileInputWrapper}>
-                  <input type="file" className={styles.fileInput} id="video" onChange={handleVideoChange} />
-                  <label htmlFor="video" className={styles.customFileLabel}>Choose a video</label>
-                  <span className={styles.fileName}>{videoName}</span>
-                </div>
-              </div>
-              <div className={styles.leftelemetsdiv}>
                 <label className={styles.description}>Description :</label>
                 <textarea
                   value={description}
@@ -142,17 +118,6 @@ function Adminpost() {
                   required
                 ></textarea>
               </div>
-              <div className={styles.leftelemetsdiv}>
-                <label className={styles.description}>Preview Link :</label>
-                <input
-                  type="text"
-                  value={previewLink}
-                  onChange={(e) => setPreviewLink(e.target.value)}
-                  placeholder="Preview Link"
-                  required
-                />
-              </div>
-              
             </div>
             <div className={styles.rightdiv}>
               <div className={styles.rightelemetsdiv}>

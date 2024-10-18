@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import ScrollReveal from 'scrollreveal';
 import styles from "../Styles/Page404.module.css";
 import img from "../../assets/ghost-img.png"
-import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
   useEffect(() => {
@@ -17,31 +16,31 @@ const ErrorPage = () => {
   }, []);
 
   return (
-    <main className={styles.main}>
-            <section className={styles.home}>
-                <div className={`${styles.homeContainer} ${styles.container}`}>
-                    <div className={styles.homeData}>
-                        <span className={styles.homeSubtitle}>Error 404</span>
-                        <h1 className={styles.homeTitle}>Hey Buddy</h1>
-                        <p className={styles.homeDescription}>
-                            We can't seem to find the page <br/> you are looking for.
-                        </p>
-                        <Link to={"/"}>
-                        <a href="/" className={styles.homeButton}>
-                            Go Home
-                        </a>
-                        </Link>
-                    </div>
+    <><div className={styles.maindiv}>
 
-                    <div className={styles.homeImg}>
-                        <img className={styles.ghostimg} src={img} alt="" />
-                        <div className={styles.homeShadow}></div>
-                    </div>
-                </div>
+    </div>
+      <main className={styles.main}>
+        <section className={styles.home}>
+          <div className={`${styles.homeContainer} container`}>
+            <div className={styles.homeData}>
+              <span className={styles.homeSubtitle}>Error 404</span>
+              <h1 className={styles.homeTitle}>Hey Buddy</h1>
+              <p className={styles.homeDescription}>
+                We can't seem to find the page <br /> you are looking for.
+              </p>
+              <a href="#" className={styles.homeButton}>
+                Go Home
+              </a>
+            </div>
 
-            
-            </section>
-        </main>
+            <div className={styles.homeImg}>
+              <img src={img} alt="Ghost Image" />
+              <div className={styles.homeShadow}></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
   );
 };
 

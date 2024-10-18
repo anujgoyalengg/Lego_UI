@@ -50,8 +50,7 @@ export default function MainPage() {
       <div className="mainpagediv">
       <div className='navbardiv'><NavBar toggleSidebar={toggleSidebar} /></div>
         
-      <Sidebar isOpen={isSidebarOpen} setCurrentComponent={setCurrentComponent} currentComponent={currentComponent} />
-
+        <Sidebar isOpen={isSidebarOpen} setCurrentComponent={setCurrentComponent}  />
         <main>
           {renderComponent()}
         </main>
